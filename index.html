@@ -523,7 +523,35 @@ section{position:relative}
 .nav-links,.nav-cta{display:none}
 .nav-hamburger{display:flex}
 .hero{min-height:auto;padding:120px 0 80px}
-.hero-visual{height:320px}
+
+/* ── Fix: remove float, stack cards vertically, no overlap ── */
+.hero-visual{
+  height:auto;
+  position:static;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  animation:none;
+}
+.float-card{
+  position:static !important;
+  animation:none !important;
+  width:100% !important;
+  transform:none !important;
+  box-shadow:var(--sh-md);
+}
+.float-card-1,
+.float-card-2,
+.float-card-3,
+.float-card-4{
+  top:auto !important;
+  right:auto !important;
+  bottom:auto !important;
+  left:auto !important;
+  display:block !important;
+}
+/* ── end fix ── */
+
 .hero-h1{font-size:32px}
 .hero-desc{font-size:15px}
 .hero-buttons{flex-direction:column}
@@ -541,7 +569,6 @@ section{position:relative}
 .form-row{grid-template-columns:1fr}
 .footer-grid{grid-template-columns:1fr;gap:32px}
 .footer-bottom{flex-direction:column;gap:8px;text-align:center}
-.float-card-2,.float-card-4{display:none}
 .section-title{font-size:28px}
 }
 @media(max-width:480px){
