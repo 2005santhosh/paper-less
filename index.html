@@ -579,10 +579,9 @@ section{position:relative}
 
 /* ── Hero ── */
 .hero{min-height:auto;padding:88px 0 48px}
-.hero-content{grid-template-columns:1fr;gap:28px}
+.hero-content{grid-template-columns:1fr;gap:20px}
 .hero-text{max-width:100%}
 .hero-badge{font-size:11px;padding:6px 14px;margin-bottom:16px}
-/* Wrapper auto, no fixed height needed */
 .hero-h1-wrap{margin-bottom:14px !important}
 .hero-h1{font-size:clamp(22px,5.5vw,32px);line-height:1.2}
 .hero-through{white-space:nowrap}
@@ -591,42 +590,37 @@ section{position:relative}
 .hero-buttons .btn{justify-content:center;padding:13px 24px;font-size:13px}
 .hero-trust{flex-wrap:wrap;gap:10px;margin-top:20px}
 .hero-trust-item{font-size:12px}
-/* Cards: fixed to right edge on mobile, 2 compact cards only */
+
+/* ── Cards: in-flow row below hero text, no overlap ── */
 .hero-visual{
-  display:flex !important;
-  flex-direction:column;
-  gap:8px;
-  position:fixed;
-  right:0;
-  top:50%;
-  transform:translateY(-50%);
-  width:148px;
-  z-index:20;
-  pointer-events:none;
-  height:auto;
-  padding-top:0;
-  animation:none !important;
-}
-.float-card{
-  pointer-events:auto;
+  position:static !important;
+  display:grid !important;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  width:100%;
+  height:auto !important;
+  padding-top:0 !important;
   animation:none !important;
   transform:none !important;
-  width:148px !important;
-  border-radius:12px 0 0 12px !important;
-  padding:12px 10px !important;
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
-  box-shadow:-4px 4px 20px rgba(59,130,246,.15);
 }
-/* Hide revenue and VAT cards — keep MTD + Documents only */
+.float-card{
+  position:static !important;
+  top:auto !important; right:auto !important;
+  bottom:auto !important; left:auto !important;
+  animation:none !important;
+  transform:none !important;
+  width:100% !important;
+  border-radius:var(--r-lg) !important;
+  padding:14px !important;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  box-shadow:var(--sh-md);
+}
+/* Show only MTD + Documents — they're compact enough */
 .float-card-1,.float-card-2{display:none !important}
-.float-card-3,.float-card-4{
-  position:relative !important;
-  top:auto !important;right:auto !important;
-  bottom:auto !important;left:auto !important;
-}
-.fc-value{font-size:18px !important}
-.fc-sub{font-size:10px !important}
+.float-card-3,.float-card-4{display:block !important}
+.fc-value{font-size:20px !important}
+.fc-sub{font-size:11px !important}
 .fc-progress{margin-top:8px !important}
 
 /* ── Section headers ── */
@@ -744,13 +738,11 @@ section{position:relative}
 .container{padding:0 16px}
 /* Hero */
 .hero{padding:80px 0 40px}
-/* height measured and locked by JS */
 .hero-h1-wrap{margin-bottom:12px !important}
 .hero-h1{font-size:clamp(20px,6vw,28px);line-height:1.2}
-/* Slightly narrower cards on tiny screens */
-.hero-visual{width:130px}
-.float-card{width:130px !important}
-.fc-value{font-size:16px !important}
+/* Single column cards on tiny screens */
+.hero-visual{grid-template-columns:1fr !important;gap:10px}
+.fc-value{font-size:18px !important}
 .hero-desc{font-size:14px;margin-bottom:18px}
 .hero-trust{gap:8px;margin-top:16px}
 .btn{width:100%;justify-content:center}
