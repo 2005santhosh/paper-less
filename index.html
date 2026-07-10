@@ -387,7 +387,7 @@ section{position:relative}
 .si-rose{background:rgba(244,63,94,.08);color:#f43f5e}
 .si-cyan{background:rgba(6,182,212,.08);color:#06b6d4}
 .service-title{font-size:18px;font-weight:700;color:var(--primary);margin-bottom:10px}
-.service-desc{font-size:14px;color:var(--text-3);line-height:1.7}
+.service-desc{font-size:14px;color:var(--text-3);line-height:1.7;text-align:justify}
 
 .why{padding:120px 0;background:var(--bg-2)}
 .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:48px}
@@ -397,7 +397,7 @@ section{position:relative}
 .why-feature-icon{width:44px;height:44px;border-radius:var(--r-sm);background:rgba(59,130,246,.06);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:20px;flex-shrink:0;transition:all .4s}
 .why-feature:hover .why-feature-icon{background:var(--accent);color:#fff;transform:scale(1.1)}
 .why-feature-title{font-size:15px;font-weight:700;color:var(--primary);margin-bottom:4px}
-.why-feature-desc{font-size:13px;color:var(--text-3);line-height:1.6}
+.why-feature-desc{font-size:13px;color:var(--text-3);line-height:1.6;text-align:justify}
 .why-visual{position:relative}
 .why-visual-card{background:var(--glass);backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:var(--r-2xl);padding:40px;box-shadow:var(--sh-lg)}
 .why-chart-row{display:flex;align-items:center;gap:16px;margin-bottom:20px}
@@ -494,6 +494,27 @@ section{position:relative}
 .footer-link{font-size:13px;transition:color .3s}
 .footer-link:hover{color:#fff}
 .footer-bottom{padding:24px 0;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.4)}
+
+/* ── Rotating tagline ── */
+.hero-tagline{font-size:18px;font-weight:600;color:var(--accent);min-height:32px;margin-bottom:16px;opacity:0;transition:opacity .5s ease}
+.hero-tagline.visible{opacity:1}
+
+/* ── Early Habit Section ── */
+.early-habit{padding:120px 0;background:var(--bg)}
+.early-habit-inner{max-width:900px;margin:0 auto;text-align:center}
+.early-habit-inner p{font-size:16px;color:var(--text-2);line-height:1.8;text-align:justify;margin-bottom:20px}
+
+/* ── Health Check / Complimentary Section ── */
+.health-check{padding:120px 0;background:var(--bg-2)}
+.health-check-inner{max-width:900px;margin:0 auto;text-align:center}
+.health-check-inner p{font-size:16px;color:var(--text-2);line-height:1.8;text-align:justify;margin-bottom:20px}
+.health-check-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:32px}
+.hc-badge{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;font-size:13px;font-weight:600;border-radius:100px;background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.14);color:var(--accent)}
+
+/* ── Tax-Less Associate Section ── */
+.taxless-section{padding:80px 0;background:var(--bg)}
+.taxless-inner{max-width:800px;margin:0 auto;text-align:center;padding:40px;background:linear-gradient(135deg,rgba(59,130,246,.04),rgba(139,92,246,.06));border:1px solid rgba(59,130,246,.12);border-radius:var(--r-2xl)}
+.taxless-inner p{font-size:15px;color:var(--text-2);line-height:1.8;text-align:justify}
 
 .back-top{position:fixed;bottom:32px;right:32px;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-purple));color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 16px rgba(59,130,246,.35);opacity:0;visibility:hidden;transform:translateY(16px);transition:all .4s;z-index:100;cursor:pointer;border:none}
 .back-top.visible{opacity:1;visibility:visible;transform:translateY(0)}
@@ -595,6 +616,7 @@ PAPER-LESS RECORDS
 <a href="#services" class="nav-link" data-section="services">Services</a>
 <a href="#team" class="nav-link" data-section="team">Team</a>
 <a href="#process" class="nav-link" data-section="process">Process</a>
+<a href="#early-habit" class="nav-link" data-section="early-habit">Our Approach</a>
 <a href="#testimonials" class="nav-link" data-section="testimonials">Testimonials</a>
 <a href="#faq" class="nav-link" data-section="faq">FAQ</a>
 <a href="#contact" class="nav-link" data-section="contact">Contact</a>
@@ -611,6 +633,7 @@ PAPER-LESS RECORDS
 <a href="#services">Services</a>
 <a href="#team">Team</a>
 <a href="#process">Process</a>
+<a href="#early-habit">Our Approach</a>
 <a href="#testimonials">Testimonials</a>
 <a href="#faq">FAQ</a>
 <a href="#contact">Contact</a>
@@ -629,6 +652,8 @@ PAPER-LESS RECORDS
 <div class="hero-text">
 <div class="hero-badge"><span class="dot"></span> HMRC Compliant &amp; MTD Ready</div>
 <h1 class="hero-h1">Smart Bookkeeping. <span class="gradient-text">Digital Compliance.</span> Complete Peace of Mind.</h1>
+<!-- Rotating tagline -->
+<p class="hero-tagline" id="heroTagline" aria-live="polite"></p>
 <p class="hero-desc">Paper-Less Records Ltd helps UK businesses manage bookkeeping, payroll, VAT, MTD compliance, and digital accounting through a completely paperless process — so you can focus on growth.</p>
 <div class="hero-buttons">
 <a href="#contact" class="btn btn-primary" onclick="addRipple(event)">Book Free Consultation <iconify-icon icon="mdi:arrow-right"></iconify-icon></a>
@@ -654,9 +679,9 @@ PAPER-LESS RECORDS
 <div class="float-card float-card-2" data-speed="0.03">
 <div class="fc-header"><span class="fc-title">VAT Status</span><span class="fc-badge green">Filed</span></div>
 <div class="fc-list">
-<div class="fc-list-item"><div class="fc-list-dot" style="background:#059669"></div> Q1 2024 — Submitted</div>
-<div class="fc-list-item"><div class="fc-list-dot" style="background:#059669"></div> Q2 2024 — Submitted</div>
-<div class="fc-list-item"><div class="fc-list-dot" style="background:#3b82f6"></div> Q3 2024 — In Progress</div>
+<div class="fc-list-item"><div class="fc-list-dot" style="background:#059669"></div> Q1 2026 — Submitted</div>
+<div class="fc-list-item"><div class="fc-list-dot" style="background:#059669"></div> Q2 2026 — Submitted</div>
+<div class="fc-list-item"><div class="fc-list-dot" style="background:#3b82f6"></div> Q3 2026 — In Progress</div>
 </div>
 </div>
 <div class="float-card float-card-3" data-speed="0.015">
@@ -685,15 +710,15 @@ PAPER-LESS RECORDS
 </div>
 <div class="about-grid">
 <div>
-<p class="reveal" style="font-size:16px;color:var(--text-2);line-height:1.8;margin-bottom:20px">At Paper-Less Records Ltd, we believe modern businesses deserve modern bookkeeping. Gone are the days of shoeboxes full of receipts and spreadsheets that never quite add up.</p>
-<p class="reveal reveal-d1" style="font-size:16px;color:var(--text-2);line-height:1.8;margin-bottom:20px">Our team combines deep expertise in UK tax regulations with cutting-edge cloud accounting tools to deliver accurate, timely, and completely digital financial management.</p>
-<p class="reveal reveal-d2" style="font-size:16px;color:var(--text-2);line-height:1.8">From sole traders to growing limited companies across England, Scotland, Wales, and Northern Ireland, we tailor our services to fit your exact needs — so you always know where you stand with HMRC.</p>
+<p class="reveal" style="font-size:16px;color:var(--text-2);line-height:1.8;margin-bottom:20px;text-align:justify">At Paper-Less Records Ltd, we believe modern businesses deserve modern bookkeeping. Gone are the days of shoeboxes full of receipts and spreadsheets that never quite add up.</p>
+<p class="reveal reveal-d1" style="font-size:16px;color:var(--text-2);line-height:1.8;margin-bottom:20px;text-align:justify">Our team combines deep expertise in UK tax regulations with cutting-edge cloud accounting tools to deliver accurate, timely, and completely digital financial management.</p>
+<p class="reveal reveal-d2" style="font-size:16px;color:var(--text-2);line-height:1.8;text-align:justify">From sole traders to growing limited companies across England, Scotland, Wales, and Northern Ireland, we tailor our services to fit your exact needs — so you always know where you stand with HMRC.</p>
 </div>
 <div class="about-stats">
-<div class="stat-card reveal"><div class="stat-number"><span class="counter" data-target="250">0</span><span class="suffix">+</span></div><div class="stat-label">Businesses Supported</div></div>
-<div class="stat-card reveal reveal-d1"><div class="stat-number"><span class="counter" data-target="12">0</span><span class="suffix"> yrs</span></div><div class="stat-label">Years of Experience</div></div>
+<div class="stat-card reveal"><div class="stat-number"><span class="counter" data-target="250">0</span><span class="suffix">+</span></div><div class="stat-label">Business Clients Served</div></div>
+<div class="stat-card reveal reveal-d1"><div class="stat-number"><span class="counter" data-target="25">0</span><span class="suffix">+</span></div><div class="stat-label">Industries Served</div></div>
 <div class="stat-card reveal reveal-d2"><div class="stat-number"><span class="counter" data-target="100">0</span><span class="suffix">%</span></div><div class="stat-label">HMRC Compliance</div></div>
-<div class="stat-card reveal reveal-d3"><div class="stat-number"><span class="counter" data-target="98">0</span><span class="suffix">%</span></div><div class="stat-label">Client Satisfaction</div></div>
+<div class="stat-card reveal reveal-d3"><div class="stat-number"><span class="counter" data-target="40">0</span><span class="suffix">+</span></div><div class="stat-label">Years of Experience</div></div>
 </div>
 </div>
 </div>
@@ -711,42 +736,42 @@ PAPER-LESS RECORDS
 
 <article class="team-card reveal">
   <div class="team-img-wrap">
-    <img src="./geoff-pb.jpeg" alt="Geoff Matthews — Head of Client Relationships at Paper-Less Records Ltd" class="team-img" loading="lazy" width="140" height="140">
+    <img src="./geoff-pb.jpeg" alt="Geoff Matthews — Chartered Accountant at Paper-Less Records Ltd" class="team-img" loading="lazy" width="140" height="140">
     <img src="./geoff-p.jpeg" alt="Geoff Matthews — Professional portrait" class="team-img-hover" loading="lazy" width="140" height="140">
   </div>
-  <h3 class="team-name">Mr. Geoff, FCA</h3>
-  <div class="team-role">Head of Client Relationships</div>
-  <p class="team-desc">Building lasting partnerships with every client, ensuring exceptional service and tailored financial solutions.</p>
+  <h3 class="team-name">Geoff Matthews</h3>
+  <div class="team-role">FCIMA, Year End Account Expert</div>
+  <p class="team-desc">With deep mastery of year-end accounts, Geoff brings financial clarity and strategic insight to every client relationship.</p>
 </article>
 
 <article class="team-card reveal reveal-d1">
   <div class="team-img-wrap">
-    <img src="./dimahi-pb.jpeg" alt="Dhimahi — Head of Business Development at Paper-Less Records Ltd" class="team-img" loading="lazy" width="140" height="140">
-    <img src="./dimahi-p.jpeg" alt="Dhimahi — Professional portrait" class="team-img-hover" loading="lazy" width="140" height="140">
+    <img src="./dimahi-pb.jpeg" alt="Dhimahi Pandya — FCA, Certified AI Accountant at Paper-Less Records Ltd" class="team-img" loading="lazy" width="140" height="140">
+    <img src="./dimahi-p.jpeg" alt="Dhimahi Pandya — Professional portrait" class="team-img-hover" loading="lazy" width="140" height="140">
   </div>
-  <h3 class="team-name">Mr. Dhimahi, FCA</h3>
-  <div class="team-role">Head of Business Development</div>
-  <p class="team-desc">Driving strategic growth and expanding our reach to help more businesses achieve financial clarity.</p>
+  <h3 class="team-name">Dhimahi Pandya</h3>
+  <div class="team-role">FCA, Certified AI Accountant</div>
+  <p class="team-desc">Blending traditional accountancy with cutting-edge AI tools to drive smarter, faster, and more accurate financial outcomes.</p>
 </article>
 
 <article class="team-card reveal reveal-d2">
   <div class="team-img-wrap">
-    <img src="./bansi-pb.jpeg" alt="Bansi — Head of Business Operations at Paper-Less Records Ltd" class="team-img" loading="lazy" width="140" height="140">
-    <img src="./bansi-p.jpeg" alt="Bansi — Professional portrait" class="team-img-hover" loading="lazy" width="140" height="140">
+    <img src="./bansi-pb.jpeg" alt="Bansi Pandya — FCA, Payroll & Management Account Master at Paper-Less Records Ltd" class="team-img" loading="lazy" width="140" height="140">
+    <img src="./bansi-p.jpeg" alt="Bansi Pandya — Professional portrait" class="team-img-hover" loading="lazy" width="140" height="140">
   </div>
-  <h3 class="team-name">Ms. Bansi, FCA</h3>
-  <div class="team-role">Head of Business Operations</div>
-  <p class="team-desc">Optimising workflows and processes to deliver seamless, efficient bookkeeping experiences.</p>
+  <h3 class="team-name">Bansi Pandya</h3>
+  <div class="team-role">FCA, Payroll &amp; Management Account Master</div>
+  <p class="team-desc">Expert in payroll processing and management accounts, ensuring every business has the insight it needs to grow confidently.</p>
 </article>
 
 <article class="team-card reveal reveal-d3">
   <div class="team-img-wrap">
-    <img src="./maryada-pb.jpeg" alt="Maryada — Head of Human Resources at Paper-Less Records Ltd" class="team-img" loading="lazy" width="140" height="140">
-    <img src="./maryada-p.jpeg" alt="Maryada — Professional portrait" class="team-img-hover" loading="lazy" width="140" height="140">
+    <img src="./maryada-pb.jpeg" alt="Maryada Pandya — FCA, VAT & MTD Expert at Paper-Less Records Ltd" class="team-img" loading="lazy" width="140" height="140">
+    <img src="./maryada-p.jpeg" alt="Maryada Pandya — Professional portrait" class="team-img-hover" loading="lazy" width="140" height="140">
   </div>
-  <h3 class="team-name">Ms. Maryada, FCA</h3>
-  <div class="team-role">Head of Human Resources</div>
-  <p class="team-desc">Nurturing talent and building a team culture rooted in expertise, empathy, and excellence.</p>
+  <h3 class="team-name">Maryada Pandya</h3>
+  <div class="team-role">FCA, VAT &amp; MTD Expert</div>
+  <p class="team-desc">Specialist in VAT compliance and Making Tax Digital, keeping clients fully ahead of HMRC requirements at every step.</p>
 </article>
 
 </div>
@@ -770,7 +795,7 @@ PAPER-LESS RECORDS
 <article class="service-card reveal reveal-d1">
 <div class="service-icon si-purple"><iconify-icon icon="mdi:file-document-check"></iconify-icon></div>
 <h3 class="service-title">Making Tax Digital (MTD)</h3>
-<p class="service-desc">Seamless MTD compliance with HMRC-approved software. We handle quarterly submissions for VAT and Income Tax Self-Assessment so you never miss a deadline.</p>
+<p class="service-desc" style="text-align:justify">Seamless MTD compliance with HMRC. We handle quarterly MTD filing and reconcile all 4 quarters with annual figures before filing your tax returns — discussing major variations so you are ready with justifications in case of any query from HMRC.</p>
 </article>
 <article class="service-card reveal reveal-d2">
 <div class="service-icon si-emerald"><iconify-icon icon="mdi:cash-multiple"></iconify-icon></div>
@@ -1033,6 +1058,47 @@ PAPER-LESS RECORDS
 </div>
 </section>
 
+<!-- ═══════ EARLY HABIT SECTION ═══════ -->
+<section class="early-habit" id="early-habit" aria-label="Get Habit of Doing Things Early">
+<div class="container">
+<div class="early-habit-inner">
+<span class="section-label reveal">Our Approach</span>
+<h2 class="section-title reveal reveal-d1">Get the Habit of Doing Things Early with Paper-Less</h2>
+<p class="reveal reveal-d2">At Paper-Less Records Ltd, we never wait for a deadline to come knocking. As soon as each tax period ends, we proactively reach out and remind you to begin gathering and processing your data. This head-start gives us the breathing room to truly understand your numbers — not just crunch them at the last moment.</p>
+<p class="reveal reveal-d3">Our early-action approach means we have time to ask the right questions, discuss queries with you, and share the details of your upcoming tax liabilities well in advance. That way, you can plan your cashflow with real confidence and the best possible insights — no surprises, no scrambles, just clarity.</p>
+</div>
+</div>
+</section>
+
+<!-- ═══════ HEALTH CHECK SECTION ═══════ -->
+<section class="health-check" id="health-check" aria-label="Complimentary Bookkeeping Health Check">
+<div class="container">
+<div class="health-check-inner">
+<span class="section-label reveal">Complimentary for New Clients</span>
+<h2 class="section-title reveal reveal-d1">Free Bookkeeping Health Check &amp; HMRC Summary Report</h2>
+<p class="reveal reveal-d2">We are currently offering every new client a complimentary health check of their bookkeeping records. This thorough review highlights gaps, errors, and opportunities for improvement — at no cost to you.</p>
+<p class="reveal reveal-d3">Alongside this, we provide a Quarterly Summary Report of your HMRC liabilities status, giving you a clear picture of any outstanding payments — whether that is PAYE, VAT, Corporation Tax, or Self-Assessment Tax. You will always know exactly where you stand with HMRC, long before any payment falls due.</p>
+<div class="health-check-badges">
+<span class="hc-badge reveal"><iconify-icon icon="mdi:check-circle"></iconify-icon> PAYE Status</span>
+<span class="hc-badge reveal reveal-d1"><iconify-icon icon="mdi:check-circle"></iconify-icon> VAT Liability</span>
+<span class="hc-badge reveal reveal-d2"><iconify-icon icon="mdi:check-circle"></iconify-icon> Corporation Tax</span>
+<span class="hc-badge reveal reveal-d3"><iconify-icon icon="mdi:check-circle"></iconify-icon> Self-Assessment Tax</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ═══════ TAX-LESS ASSOCIATE SECTION ═══════ -->
+<section class="taxless-section" id="taxless" aria-label="Tax-Less UK Limited — Our Associate">
+<div class="container">
+<div class="taxless-inner">
+<span class="section-label reveal" style="margin-bottom:20px;display:inline-flex">Our Associate</span>
+<h2 class="section-title reveal reveal-d1" style="font-size:clamp(24px,3.5vw,38px)">Tax-Less UK Limited</h2>
+<p class="reveal reveal-d2">Tax-Less UK Limited is our associate firm, dedicated to helping our clients with proactive tax planning and tax reduction strategies. Working in close collaboration with Paper-Less Records Ltd, the Tax-Less team ensures that your business not only remains compliant but is always structured in the most tax-efficient way possible — putting more of your hard-earned money back where it belongs.</p>
+</div>
+</div>
+</section>
+
 <!-- ═══════ FAQ ═══════ -->
 <section class="faq" id="faq" aria-label="Frequently asked questions">
 <div class="container">
@@ -1122,7 +1188,7 @@ PAPER-LESS RECORDS
 <div class="contact-info-icon"><iconify-icon icon="mdi:email-outline"></iconify-icon></div>
 <div>
 <div class="contact-info-label">Email Us</div>
-<div class="contact-info-value">info@paperlessrecords.uk</div>
+<div class="contact-info-value">info@paperlessrecords.co.uk<br>office@paperlessrecords.co.uk</div>
 </div>
 </div>
 <div class="contact-info-card">
@@ -1165,6 +1231,8 @@ PAPER-LESS RECORDS
 <a href="#services" class="footer-link">Services</a>
 <a href="#team" class="footer-link">Our Team</a>
 <a href="#process" class="footer-link">How It Works</a>
+<a href="#early-habit" class="footer-link">Our Approach</a>
+<a href="#health-check" class="footer-link">Health Check</a>
 <a href="#testimonials" class="footer-link">Testimonials</a>
 <a href="#faq" class="footer-link">FAQ</a>
 </div>
@@ -1394,7 +1462,28 @@ function showToast(msg,type){
   setTimeout(function(){toast.classList.remove('show')},4000);
 }
 
-/* ── Process Steps Active on Scroll ── */
+/* ── Rotating Hero Tagline ── */
+(function(){
+  var lines=[
+    'Know your taxes in Advance. Control Your Cashflow. Stay Ahead Always with Paper-Less.',
+    'Free Bookkeeping Health Check — For Every New Client.',
+    'Know What\'s Due. Before HMRC Does. Complete Confidence with Paper-Less.',
+    'Bookkeeping First. Tax Planning Next. Get the Advantage with Paper-Less.'
+  ];
+  var el=document.getElementById('heroTagline');
+  if(!el)return;
+  var idx=0;
+  function showLine(){
+    el.classList.remove('visible');
+    setTimeout(function(){
+      el.textContent=lines[idx];
+      el.classList.add('visible');
+      idx=(idx+1)%lines.length;
+    },500);
+  }
+  showLine();
+  setInterval(showLine,4000);
+})();
 var processSteps=document.querySelectorAll('.process-step');
 var processObs=new IntersectionObserver(function(entries){
   entries.forEach(function(entry){
